@@ -36,7 +36,7 @@ app.get("/produtos/:id", (req, res) => {
     const produto = produtos.find((p) => p.id === Number(req.params.id));
 
     if (!produto) {
-        return res.status(404).json({ erro: "Produto não encontrado." });
+        return res.status(404).json({ erro: "Produto não encontrado" });
     }
     res.status(200).json(produto);
 });
@@ -60,7 +60,7 @@ app.post("/produtos", (req, res) => {
 app.put("/produtos/:id", (req, res) => {
     const produto = produtos.find((p) => p.id === Number(req.params.id));
     if (!produto) {
-        return res.status(404).json({ erro: "Produto não encontrado." });
+        return res.status(404).json({ erro: "Produto não encontrado" });
     }
 
     const erro = validarProduto(req.body);
@@ -76,7 +76,7 @@ app.put("/produtos/:id", (req, res) => {
 app.delete("/produtos/:id", (req, res) => {
     const existe = produtos.some((p) => p.id === Number(req.params.id));
     if (!existe) {
-        return res.status(404).json({ erro: "Produto não encontrado." });
+        return res.status(404).json({ erro: "Produto não encontrado" });
     }
 
     produtos = produtos.filter((p) => p.id !== Number(req.params.id));
