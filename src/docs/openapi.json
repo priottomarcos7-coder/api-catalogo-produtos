@@ -1,0 +1,175 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API de Catálogo de Produtos",
+    "version": "1.0.0",
+    "description": "API de exemplo para cadastro de produtos, criada para praticar testes automatizados."
+  },
+  "servers": [{ "url": "/" }],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Verifica se a API está no ar",
+        "responses": {
+          "200": { "description": "API funcionando" }
+        }
+      }
+    },
+    "/produtos": {
+      "get": {
+        "summary": "Lista todos os produtos",
+        "responses": {
+          "200": {
+            "description": "Lista de produtos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Produto" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria um produto",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ProdutoEntrada" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Produto criado",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Produto" }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Erro" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/produtos/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "integer" },
+          "example": 1
+        }
+      ],
+      "get": {
+        "summary": "Busca um produto pelo id",
+        "responses": {
+          "200": {
+            "description": "Produto encontrado",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Produto" }
+              }
+            }
+          },
+          "404": {
+            "description": "Produto não encontrado",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Erro" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza um produto",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ProdutoEntrada" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Produto atualizado",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Produto" }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Erro" }
+              }
+            }
+          },
+          "404": {
+            "description": "Produto não encontrado",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Erro" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Apaga um produto",
+        "responses": {
+          "204": { "description": "Produto apagado" },
+          "404": {
+            "description": "Produto não encontrado",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Erro" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Produto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 1 },
+          "nome": { "type": "string", "example": "Camiseta" },
+          "preco": { "type": "number", "example": 59.9 }
+        }
+      },
+      "ProdutoEntrada": {
+        "type": "object",
+        "required": ["nome", "preco"],
+        "properties": {
+          "nome": { "type": "string", "example": "Boné" },
+          "preco": { "type": "number", "minimum": 0.01, "example": 39.9 }
+        }
+      },
+      "Erro": {
+        "type": "object",
+        "properties": {
+          "erro": { "type": "string", "example": "Produto não encontrado" }
+        }
+      }
+    }
+  }
+}

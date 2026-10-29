@@ -1,7 +1,10 @@
 const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const openapi = require("./docs/openapi.json");
 
 const app = express();
 app.use(express.json());
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(openapi));
 
 let produtos = [
     { id: 1, nome: "camiseta", preco: 59.9 },
