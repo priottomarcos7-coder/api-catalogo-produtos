@@ -4,6 +4,8 @@
 
 API REST de cadastro de produtos, criada para praticar **testes automatizados de API**. O projeto inclui CRUD completo, validações, documentação com Swagger e uma suíte de testes com Cypress que roda automaticamente a cada push, via GitHub Actions.
 
+🌐 **[Read this page in English](README-en.md)**
+
 ## Tecnologias
 
 - Node.js e Express (API)
