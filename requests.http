@@ -1,0 +1,48 @@
+@url = http://localhost:3333
+
+### Listar produtos
+GET {{url}}/produtos
+
+### Buscar produto por id
+GET {{url}}/produtos/1
+
+### Buscar produto que não existe (esperado: 404)
+GET {{url}}/produtos/999
+
+### Criar produto (esperado: 201)
+POST {{url}}/produtos
+Content-Type: application/json
+
+{
+  "nome": "Boné",
+  "preco": 39.9
+}
+
+### Criar produto sem nome (esperado: 400)
+POST {{url}}/produtos
+Content-Type: application/json
+
+{
+  "preco": 39.9
+}
+
+### Criar produto com preço negativo (esperado: 400)
+POST {{url}}/produtos
+Content-Type: application/json
+
+{
+  "nome": "Meia",
+  "preco": -5
+}
+
+### Atualizar produto (esperado: 200)
+PUT {{url}}/produtos/1
+Content-Type: application/json
+
+{
+  "nome": "Camiseta Premium",
+  "preco": 89.9
+}
+
+### Apagar produto (esperado: 204)
+DELETE {{url}}/produtos/2
