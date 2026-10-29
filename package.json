@@ -8,7 +8,7 @@
   "dev": "node --watch src/server.js",
   "cy:open": "cypress open",
   "test": "cypress run",
-  "test:ci": "start-server-and-test start http://localhost:3000/health test"
+  "test:ci": "start-server-and-test start http://localhost:3333/health test"
 },
   "repository": {
     "type": "git",
