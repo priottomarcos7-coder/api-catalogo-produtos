@@ -1,0 +1,26 @@
+{
+  "name": "api-catalogo-produtos",
+  "version": "1.0.0",
+  "description": "API de catálogo de produtos com testes automatizados",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priottomarcos7-coder/api-catalogo-produtos.git"
+  },
+  "keywords": [],
+  "author": "Marcos Vinicios",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/priottomarcos7-coder/api-catalogo-produtos/issues"
+  },
+  "homepage": "https://github.com/priottomarcos7-coder/api-catalogo-produtos#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
