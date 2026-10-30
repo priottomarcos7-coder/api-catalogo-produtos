@@ -4,12 +4,13 @@
   "description": "API de catálogo de produtos com testes automatizados",
   "main": "src/server.js",
   "scripts": {
-  "start": "node src/server.js",
-  "dev": "node --watch src/server.js",
-  "cy:open": "cypress open",
-  "test": "cypress run",
-  "test:ci": "start-server-and-test start http://localhost:3333/health test"
-},
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "cy:open": "cypress open",
+    "test": "cypress run",
+    "test:report": "cypress run --reporter junit --reporter-options \"mochaFile=results/junit-[hash].xml,toConsole=true\"",
+    "test:ci": "start-server-and-test start http://localhost:3333/health test:report"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/priottomarcos7-coder/api-catalogo-produtos.git"
