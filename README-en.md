@@ -65,6 +65,12 @@ npm run cy:open
 
 On every push and pull request to the `main` branch, GitHub Actions installs dependencies, starts the API, and runs the tests. The result is shown in the badge at the top of this README and in the repository's **Actions** tab.
 
+## Performance Testing with k6
+
+The project also includes an initial k6 load-test scenario using the `GET /produtos` endpoint. The default run uses 5 virtual users for 15 seconds, checks for HTTP 200, and verifies that the response is a JSON array. This is a short introductory scenario, not a capacity or stress test.
+
+See [performance-k6/README.md](performance-k6/README.md) for setup and execution instructions.
+
 ## Project Structure
 
 ```
