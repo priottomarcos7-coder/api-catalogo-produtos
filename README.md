@@ -65,6 +65,12 @@ npm run cy:open
 
 A cada push e pull request na branch `main`, o GitHub Actions instala as dependências, sobe a API e executa os testes. O resultado aparece no selo no topo deste README e na aba **Actions** do repositório.
 
+## Teste de performance com k6
+
+O projeto também inclui um cenário inicial de teste de carga com k6, usando o endpoint `GET /produtos`. A execução padrão utiliza 5 usuários virtuais durante 15 segundos, valida o status HTTP 200 e confirma que a resposta é um array JSON. Esse cenário é curto e serve como demonstração inicial, não como teste de capacidade ou stress.
+
+Consulte [performance-k6/README.md](performance-k6/README.md) para instalar, iniciar a API e executar o teste.
+
 ## Estrutura do projeto
 
 ```
